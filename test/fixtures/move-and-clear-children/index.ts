@@ -54,7 +54,7 @@ const renderer = (
   loop(
     input.children,
     (loopParent, item) => {
-      dynamicText(compute(() => get(item).text), loopParent);
+      dynamicText(compute(set => set(get(item).text)), loopParent);
     },
     div,
     i => "" + i.id

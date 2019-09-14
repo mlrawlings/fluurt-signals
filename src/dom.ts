@@ -30,7 +30,7 @@ export function dynamicTag(
   const renderFns = new Map();
 
   return conditional(
-    compute(() => {
+    compute(setRender => {
       const nextTag = get(tag);
       let nextRender = renderFns.get(nextTag);
       if (!nextRender) {
@@ -46,7 +46,9 @@ export function dynamicTag(
         } else if (nextTag) {
           if (nextTag.input) {
             const tagInput = body
-              ? compute(() => ({ ...get(input), renderBody: body }))
+              ? (compute(setInput =>
+                  setInput({ ...get(input), renderBody: body })
+                ) as MaybeSignal<{ [x: string]: unknown }>)
               : input;
             nextRender = (fragmentParent: Fragment) =>
               nextTag(fragmentParent, dynamicKeys(tagInput, nextTag.input!));
@@ -58,7 +60,7 @@ export function dynamicTag(
         }
         renderFns.set(nextTag, nextRender);
       }
-      return nextRender;
+      return setRender(nextRender);
     }),
     parent
   );

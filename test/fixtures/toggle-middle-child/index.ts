@@ -35,7 +35,7 @@ const renderer = (
     endEl(span, ifParent);
   };
   el("span", div);
-  conditional(compute(() => (get(input.value) ? branch0 : undefined)), div);
+  conditional(compute(set => set(get(input.value) ? branch0 : undefined)), div);
   el("span", div);
   endEl(div, parent);
 };

@@ -35,7 +35,7 @@ const renderer = (
     dynamicText(input.value, span);
     endEl(span, ifParent);
   };
-  conditional(compute(() => (get(input.value) ? branch0 : undefined)), div);
+  conditional(compute(set => set(get(input.value) ? branch0 : undefined)), div);
   el("span", div);
   el("span", div);
   endEl(div, parent);
