@@ -7,12 +7,12 @@ const xmlReplacements = {
   "\n": "&#10;" // Preserve new lines so that they don't get normalized as space.
 } as const;
 
-export const escapeScript = escapeTagEnding("script");
-export const escapeStyle = escapeTagEnding("style");
-export const escapeXML = escapeIfNeeded(val =>
+export const script = escapeTagEnding("script");
+export const style = escapeTagEnding("style");
+export const xml = escapeIfNeeded(val =>
   val.replace(xmlCharReg, replaceXMLChar)
 );
-export const escapeXMLAttr = escapeIfNeeded(val =>
+export const xmlAttr = escapeIfNeeded(val =>
   val.replace(xmlAttrReg, replaceXMLChar)
 );
 

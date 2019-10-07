@@ -2,7 +2,7 @@ export { register } from "../common/registry";
 
 export { classAttr, styleAttr } from "../common/helpers";
 
-export { escapeScript, escapeStyle, escapeXML } from "./escape";
+export { script, style, xml } from "./content";
 
 export { attr, attrs } from "./attrs";
 

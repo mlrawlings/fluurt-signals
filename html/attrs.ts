@@ -1,4 +1,4 @@
-import { escapeXMLAttr } from "./escape";
+import { xmlAttr } from "./content";
 
 const invalidAttrNameReg = /[\s'"</=\\]/u; // https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
 const validAttrNames: { [x: string]: boolean } = Object.create(null);
@@ -9,7 +9,7 @@ export function attr(name: string, val: unknown) {
     return ` ${name}`;
   }
 
-  const escaped = escapeXMLAttr(val);
+  const escaped = xmlAttr(val);
 
   if (escaped === "") {
     return "";
