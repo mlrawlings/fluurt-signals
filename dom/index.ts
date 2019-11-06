@@ -3,7 +3,10 @@ export { loopOf, loopIn, loopFrom, conditional } from "./control-flow";
 export {
   Signal,
   MaybeSignal,
-  compute,
+  createSignal,
+  createComputation as compute,
+  createAsyncComputation as computeAsync,
+  createEffect as effect,
   dynamicKeys,
   get,
   set,

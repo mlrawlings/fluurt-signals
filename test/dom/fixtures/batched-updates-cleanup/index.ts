@@ -1,8 +1,7 @@
 import {
   once,
   compute,
-  get,
-  Signal,
+  createSignal,
   conditional,
   set,
   register
@@ -19,8 +18,8 @@ export const inputs = [{}, click] as const;
 const renderer = register(
   __dirname.split("/").pop()!,
   (input: (typeof inputs)[0]) => {
-    const show = new Signal(true);
-    const message = new Signal("hi");
+    const show = createSignal(true);
+    const message = createSignal("hi");
 
     beginEl("button");
     once("click", () => {
@@ -33,7 +32,7 @@ const renderer = register(
       dynamicText(message);
       endEl();
     };
-    conditional(compute(() => (get(show) ? branch0 : undefined)));
+    conditional(compute(_show => (_show ? branch0 : undefined), [show]));
   }
 );
 

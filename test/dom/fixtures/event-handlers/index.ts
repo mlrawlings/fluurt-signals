@@ -1,8 +1,7 @@
 import {
   dynamicOn,
   compute,
-  get,
-  Signal,
+  createSignal,
   set,
   register
 } from "../../../../dom/index";
@@ -19,15 +18,17 @@ const renderer = register(
   __dirname.split("/").pop()!,
   (input: (typeof inputs)[0]) => {
     beginEl("button");
-    const clickCount = new Signal(0);
+    const clickCount = createSignal(0);
     dynamicOn(
       "click",
-      compute(() =>
-        get(clickCount) <= 1
-          ? () => {
-              set(clickCount, get(clickCount) + 1);
-            }
-          : false
+      compute(
+        count =>
+          count <= 1
+            ? () => {
+                set(clickCount, count + 1);
+              }
+            : false,
+        [clickCount]
       )
     );
     dynamicText(clickCount);
