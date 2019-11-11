@@ -5,18 +5,19 @@ import { serverRegister } from "../../../../common/server-registry";
 const renderer = () => {
   firstComponent("");
   secondComponent("");
+  thirdComponent("");
 };
 
 const firstComponent = serverRegister(__dirname.split("/").pop()!, () => {
-  write("x");
-  write("y");
-  write("z");
+  fork(resolveAfter("a", 3), write);
 });
 
 const secondComponent = serverRegister(__dirname.split("/").pop()!, () => {
-  write("a");
-  fork(resolveAfter("b", 1), write);
-  fork(resolveAfter("c", 2), write);
+  fork(resolveAfter("b", 2), write);
+});
+
+const thirdComponent = serverRegister(__dirname.split("/").pop()!, () => {
+  fork(resolveAfter("c", 1), write);
 });
 
 export default renderer;

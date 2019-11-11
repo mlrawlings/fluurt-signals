@@ -67,8 +67,11 @@ export function fork<T extends unknown>(
 ) {
   const currentOut = out!;
   const currentPromises = promises;
+  const currentComponentLookup: ComponentEntry[] = [];
   let currentFlush = flush!;
   let resolved = false;
+
+  // Child component lookup
   currentFlush();
   out = currentOut;
 
@@ -79,7 +82,9 @@ export function fork<T extends unknown>(
     } else {
       bufferedAfter += buffer;
       if (componentLookup.length > 0) {
-        bufferedAfter += `<script>${JSON.stringify(componentLookup)}</script>`;
+        componentLookup.forEach(entry => {
+          currentComponentLookup.push(entry);
+        });
         componentLookup.length = 0;
       }
       cleanup();
@@ -99,6 +104,12 @@ export function fork<T extends unknown>(
           renderResult(result);
         } finally {
           buffer += bufferedAfter;
+          if (currentComponentLookup.length > 0) {
+            currentComponentLookup.forEach(entry => {
+              componentLookup.push(entry);
+            });
+            currentComponentLookup.length = 0;
+          }
           const previousFlush = currentFlush;
           const childPromises = promises;
           currentFlush = flush;

@@ -7,11 +7,11 @@ _flush_
 _flush_
 
 # write
-  <t id="M$1">bcd</t><script>(M$r=REORDER_RUNTIME)(1)</script>
+  <t id="M$1">bcd</t><script>(M$r=REORDER_RUNTIME)(1)</script><script>[{"markerId":0,"componentId":"component-markers-placeholder","input":{}}]</script>
 _flush_
 
 # write
-  <t id="M$3">wxy<script>[{"markerId":0,"componentId":"component-markers-placeholder","input":{}}]</script></t><script>M$r(3)</script>
+  <t id="M$3">wxy</t><script>M$r(3)</script>
 _flush_
 
 # end
@@ -24,14 +24,13 @@ _flush_
       abcdefg
       <!--MC$0/-->
       <!--MC$2-->
-      vwxy
-      <script>
-        [{"markerId":0,"componentId":"component-markers-placeholder","input":{}}]
-      </script>
-      z
+      vwxyz
       <!--MC$2/-->
       <script>
         [{"markerId":2,"componentId":"component-markers-placeholder","input":{}}]
+      </script>
+      <script>
+        [{"markerId":0,"componentId":"component-markers-placeholder","input":{}}]
       </script>
     </body>
   </html>
