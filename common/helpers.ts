@@ -3,7 +3,7 @@ export function classValue(value: unknown) {
 }
 
 function stringifyClassObject(name: string, value: unknown) {
-  if (isEmpty(value)) {
+  if (isVoid(value)) {
     return "";
   }
 
@@ -16,7 +16,7 @@ export function styleValue(value: unknown) {
 
 const NON_DIMENSIONAL = /^(--|ta|or|li|z)|n-c|i(do|nk|m|t)|w$|we/;
 function stringifyStyleObject(name: string, value: unknown) {
-  if (isEmpty(value)) {
+  if (isVoid(value)) {
     return "";
   }
 
@@ -66,6 +66,6 @@ function toDelimitedString(
   return "";
 }
 
-export function isEmpty(value: unknown) {
+export function isVoid(value: unknown) {
   return value == null || value === false;
 }
