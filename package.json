@@ -12,7 +12,7 @@
     "@types/node": "^12.7.3",
     "coveralls": "^3.0.6",
     "husky": "^3.0.5",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "jsdom-context-require": "^2.0.1",
     "lint-staged": "^9.2.5",
     "minified-size": "^2.0.3",
