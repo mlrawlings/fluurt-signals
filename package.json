@@ -16,7 +16,7 @@
     "jsdom-context-require": "^2.0.1",
     "lint-staged": "^9.2.5",
     "minified-size": "^2.0.3",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "pretty-format": "^24.9.0",
